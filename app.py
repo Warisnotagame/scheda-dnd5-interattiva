@@ -869,5 +869,10 @@ with gr.Blocks(title="Scheda D&D Interattiva") as app:
     livello.change(show_progress="hidden", fn=lambda c, l: calcola_slot_incantesimo(c, int(l)), inputs=[classe, livello], outputs=slot_incantesimo_display)
 
 
-if __name__ == "__main__":
-    app.launch(css=CSS_PERGAMENA)
+import os
+
+app.launch(
+    server_name="0.0.0.0",
+    server_port=int(os.environ.get("PORT", 7860)),
+    css=CSS_PERGAMENA
+)
